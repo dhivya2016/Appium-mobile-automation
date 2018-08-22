@@ -1,0 +1,34 @@
+group 'com.test'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+
+    mavenCentral()
+
+    dependencies {
+        testCompile 'info.cukes:cucumber-java8:1.2.5'
+        testCompile 'info.cukes:cucumber-junit:1.2.5'
+        testCompile 'info.cukes:cucumber-picocontainer:1.2.5'
+        testCompile 'info.cukes:cucumber-core:1.2.5'
+        testCompile 'junit:junit:4.12'
+        testCompile 'io.appium:java-client:5.0.0-BETA3'
+        compile 'com.fasterxml.jackson.core:jackson-core:2.8.7'
+        compile 'com.fasterxml.jackson.core:jackson-annotations:2.8.7'
+        compile 'com.github.mkolisnyk:cucumber-runner:1.0.11'
+        compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+        testRuntime group: 'org.slf4j', name: 'slf4j-api', version: '1.7.+'
+        testRuntime group: 'ch.qos.logback', name: 'logback-classic', version: '1.+'
+        compile group: 'net.masterthought', name: 'cucumber-reporting', version: '3.19.0'
+    }
+
+    test {
+        ignoreFailures = true
+        testLogging.showStandardStreams = true
+        systemProperties System.getProperties()
+    }
+
+}
