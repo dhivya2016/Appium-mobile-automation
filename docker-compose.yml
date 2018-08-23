@@ -1,0 +1,18 @@
+appium-android:
+  image: appium/appium
+  privileged: true
+  container_name: appium
+  volumes:
+    - /Users/Dhivya:/Users/Dhivya
+    - ./ApiDemos-debug.apk:/opt/ApiDemos-debug.apk
+  ports:
+    - 4723:4723
+
+java-gradle:
+  image: gradle
+  container_name: gradle
+  volumes:
+    - ./:/home
+  command: ./gradlew clean test
+  links:
+    - appium-android:localhost
